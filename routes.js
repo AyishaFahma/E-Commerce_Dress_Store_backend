@@ -9,8 +9,15 @@ const userController = require('./controllers/userController')
 //import product controller
 const productController = require('./controllers/productController')
 
+//import jwtmiddleware
+const jwt = require('./middleware/jwtMiddleware')
+
 // instance for the class Router
 const routes = new express.Router()
+
+
+
+
 
 
 
@@ -36,6 +43,21 @@ routes.get('/view-product', productController.viewAllProductController)
 
 //path to delete a product
 routes.delete('/delete-product/:id' , productController.deleteProductController)
+
+
+
+
+
+
+
+//---------------------------USER----------------------------
+
+//path to get all product in shopall path
+routes.get('/view-allproduct-user' , jwt, productController.getAllProductsUserController)
+
+
+
+
 
 
 

@@ -92,3 +92,17 @@ exports.deleteProductController = async(req,res)=>{
     }
     
 }
+
+
+//logic for get all products in user side
+exports.getAllProductsUserController = async(req,res)=>{
+
+    try {
+
+        const allProductsUser = await products.find().sort({_id:-1})
+        res.status(200).json(allProductsUser)
+        
+    } catch (error) {
+        res.status(500).json(error)
+    }
+}

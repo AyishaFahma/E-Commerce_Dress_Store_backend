@@ -16,6 +16,10 @@ const jwtMiddleware = (req, res, next)=>{
 
         console.log(jwtResponse);
 
+        req.payload = jwtResponse.userMail 
+        console.log('payload is', req.payload);
+        
+
         next()
         
         

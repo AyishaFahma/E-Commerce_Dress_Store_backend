@@ -9,6 +9,9 @@ const userController = require('./controllers/userController')
 //import product controller
 const productController = require('./controllers/productController')
 
+//import sell controller
+const sellController = require('./controllers/sellController')
+
 //import jwtmiddleware
 const jwt = require('./middleware/jwtMiddleware')
 
@@ -45,7 +48,20 @@ routes.get('/view-product', productController.viewAllProductController)
 routes.delete('/delete-product/:id' , productController.deleteProductController)
 
 
+//path to view all user selled products
+routes.get('/view-alluser-product' , sellController.getAllUserItemsController)
 
+
+//path to view single product selled by the user when modal opens
+routes.get('/view-single-useritems/:id' , sellController.getSingleItemsController)
+
+
+//path to approve a product
+routes.put('/approve-product/:id' , sellController.approveProductController)
+
+
+//path to reject product
+routes.put('/reject-product/:id' , sellController.rejectProductController)
 
 
 
@@ -56,8 +72,20 @@ routes.delete('/delete-product/:id' , productController.deleteProductController)
 routes.get('/view-allproduct-user' , jwt, productController.getAllProductsUserController)
 
 
+//path to get single category
+routes.get('/view-single-category' ,jwt, productController.getSingleCategoryController)
 
 
+//path to add a product for selling
+routes.post('/addto-sell-products' , jwt , multerConfig.array('uploadImages' , 3) , sellController.sellProductController)
+
+
+//path to get all selled product status
+routes.get('/view-selled-product', jwt ,sellController.getAllSelledItemsController)
+
+
+//path to delete a selled product
+routes.delete('/delete-sell-product/:id' , sellController.removeProductController)
 
 
 

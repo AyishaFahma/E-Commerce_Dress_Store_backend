@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose')
 
-const productSchema = new mongoose.Schema( {
+const sellSchema = new mongoose.Schema( {
     
     title:{
         type:String,
@@ -28,34 +28,6 @@ const productSchema = new mongoose.Schema( {
         type:String,
         required:true
     },
-    bust:{
-        type:Number,
-        required:true
-    },
-    waist:{
-        type:Number,
-        required:true
-    },
-    hip:{
-        type:Number,
-        required:true
-    },
-    sku:{
-        type:String,
-        required:true
-    },
-    rating:{
-        type:String,
-        required:true
-    },
-    frontlength:{
-        type:Number,
-        required:true
-    },
-    backlength:{
-        type:Number,
-        required:true
-    },
     price:{
         type:Number,
         required:true
@@ -66,6 +38,10 @@ const productSchema = new mongoose.Schema( {
     },
     uploadImages:{
         type:Array,
+        required:true
+    },
+    description:{
+        type:String,
         required:true
     },
     status:{
@@ -85,6 +61,6 @@ const productSchema = new mongoose.Schema( {
 
 
 
-const products = mongoose.model("products" , productSchema)
+const sells = mongoose.model("sells" , sellSchema)
 
-module.exports = products
+module.exports = sells

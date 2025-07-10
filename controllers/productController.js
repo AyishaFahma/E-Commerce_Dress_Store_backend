@@ -106,3 +106,30 @@ exports.getAllProductsUserController = async(req,res)=>{
         res.status(500).json(error)
     }
 }
+
+// to get single category - dresses tops bottoms
+exports.getSingleCategoryController = async(req, res)=>{    
+    
+    const {category} = req.query
+    console.log(category);
+
+
+    const query={
+        category:{
+            $eq : category
+        }
+    }
+    
+    
+    try {
+
+        const allDresses = await products.find(query)
+        res.status(200).json(allDresses)
+        
+    } catch (error) {
+        res.status(500).json(error)
+    }    
+
+}
+
+
